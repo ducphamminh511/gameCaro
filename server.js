@@ -21,6 +21,16 @@ io.on('connection', function(socket){
     socket.on('clientClick',function(data){
         console.log(data);
         socket.broadcast.emit('serverNotify', data);
+    });
+    socket.on('chonmau', function(d){
+        if(d.color == 'black')
+        {
+            socket.broadcast.emit('confirmColor', {color:'black'});
+        }
+        if(d.color == 'white')
+        {
+            socket.broadcast.emit('confirmColor', {color:'white'});
+        }
     })
 });
 
