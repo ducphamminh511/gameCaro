@@ -23,9 +23,9 @@
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">CaroNode7</h3>
-                            <div>
-                                <li><a id="white" href="#"> Chọn màu trắng</a></li>
-                                <li><a id="black" href="#"> Chọn màu đen</a></li>
+                            <div id="groupBtn">
+                                <li id="wh"><button id="white" class="btn btn-default">Chọn "màu trắng"</button><b id="chooseWh"></b></li>
+                                <li id="bl"><button id="black" class="btn btn-success">Chọn "màu đen" .</button><b id="chooseBl"></b></li>
                             </div>
                     </div>
                     <div class="panel-body">
@@ -129,10 +129,14 @@
             });
 
             $('#white').click(function(){
-                socket.emit('chonmau',{color:'white'});
+                $('#chooseWh').html(`-- Bạn đã chọn màu đen!`);
+                socket.emit('chonmau',{color:'white', playerName: playerName});
+                $('#bl').hide();
             });
             $('#black').click(function(){
-                socket.emit('chonmau',{color:'black'});
+                $('#chooseBl').html(`-- Bạn đã chọn màu trắng!`);
+                socket.emit('chonmau',{color:'black', playerName: playerName});
+                $('#wh').hide();
             })
         });
         var turn ;
@@ -142,10 +146,16 @@
        var size = d3.range(100);
        var id = '0'; //đã vẽ rồi
        socket.on('confirmColor', function(c){
-           if(c.color == 'black')
-            turn = true;
-           else
-            turn = false
+           console.log(c);
+           if(c.color == 'black'){
+                turn = true;
+                $('#black').hide();
+                $('#chooseBl').html(`-- ${c.playerName} đã chọn màu trắng}!`);
+           } else {
+               turn = false;
+               $('#white').hide();
+                $('#chooseWh').html(`-- ${c.playerName} đã chọn màu đen!`);
+           }
        })
        
 

@@ -1,21 +1,28 @@
 {
   "name": "game",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.2.5",
+  "description": "Game Gomoku",
+  "engines": {
+    "node": "5.9.1"
+  },
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "angular_d3": "^0.1.1",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "socket.io": "^1.7.3"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minhducisc/gameCaro.git"
   },
   "keywords": [
-    "node7"
+    "node",
+    "heroku",
+    "express"
   ],
-  "author": "duc",
-  "license": "ISC"
+  "license": "MIT"
 }
